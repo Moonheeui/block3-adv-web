@@ -123,24 +123,20 @@ switch ($expr) {
 
 $word = "racecar";
 
-function isPalindrome($word)
+function isPalindrome(string $str): bool
 {
-    $word = strtolower($word);
-    $word = str_replace(" ", "", $word);
-
-    $length = strlen($word);
-    $half = floor($length / 2);
-
-    for ($i = 0; $i < $half; $i++) {
-        if ($word[$i] != $word[$length - $i - 1]) {
+    $strLen = strlen($str);
+    $left = 0;
+    $right = $strLen - 1;
+    while ($left < $right) {
+        if ($str[$left] != $str[$right]) {
             return false;
         }
+
+        $left++;
+        $right--;
     }
     return true;
 }
-
-
-echo isPalindrome("racecar") ? "Racecar is a palindrome." : "Racecar is not a palindrome.";
-
 
 ?>
