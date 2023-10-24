@@ -1,6 +1,6 @@
 <?php
 
-echo "demo" . "delta";
+// echo "demo" . "delta";
 
 $phaseToTest = "taco   ..cat.";
 
