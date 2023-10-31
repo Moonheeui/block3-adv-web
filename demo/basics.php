@@ -115,28 +115,3 @@ switch ($expr) {
 
 
 ?>
-
-
-<?php
-
-// create a function that checks if a word is a palindrome, using only basics and continue and break, Remember no string functions!!
-
-$word = "racecar";
-
-function isPalindrome(string $str): bool
-{
-    $strLen = strlen($str);
-    $left = 0;
-    $right = $strLen - 1;
-    while ($left < $right) {
-        if ($str[$left] != $str[$right]) {
-            return false;
-        }
-
-        $left++;
-        $right--;
-    }
-    return true;
-}
-
-?>
