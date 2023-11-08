@@ -11,7 +11,7 @@
 | S1032   | Robin Plevin  | P105      | Jill Bell     |    14-Oct-03 16.30    | S15       |
 | S1032   | Robin Plevin  | P110      | John Walker   |    15-Oct-03 18.00    | S13       |
 
-`2NF`
+`Solution`
 
 _Primary Key is staffNo_
 
@@ -23,14 +23,14 @@ _Primary Key is staffNo_
 
 _Primary Key is staffNo and patientNo_
 
-| staffNo | patientNo | patientName   | appointment date time | surgeryNo |
-| ------- | --------- | ------------- | :-------------------: | --------- |
-| S1011   | P100      | Gillian White |    12-Aug-03 10.00    | S10       |
-| S1011   | P105      | Jill Bell     |    13-Aug-03 12.00    | S15       |
-| S1024   | P108      | Ian MacKay    |   12-Sept-03 10.00    | S10       |
-| S1024   | P108      | Ian MacKay    |   14-Sept-03 10.00    | S10       |
-| S1032   | P105      | Jill Bell     |    14-Oct-03 16.30    | S15       |
-| S1032   | P110      | John Walker   |    15-Oct-03 18.00    | S13       |
+| staffNo | patientNo | appointment date time | surgeryNo |
+| ------- | --------- | :-------------------: | --------- |
+| S1011   | P100      |    12-Aug-03 10.00    | S10       |
+| S1011   | P105      |    13-Aug-03 12.00    | S15       |
+| S1024   | P108      |   12-Sept-03 10.00    | S10       |
+| S1024   | P108      |   14-Sept-03 10.00    | S10       |
+| S1032   | P105      |    14-Oct-03 16.30    | S15       |
+| S1032   | P110      |    15-Oct-03 18.00    | S13       |
 
 > Exercise 2
 
@@ -43,18 +43,24 @@ _Primary Key is staffNo and patientNo_
 | 712670YD | C1025      | 28           | Sarah White  | H4      | Glasgow       |
 | 113567WD | C1025      | 16           | John Smith   | H4      | Glasgow       |
 
-`3NF`
+`Solution`
 
 _Primery Key is NIN and contractNo_
 
-| NIN      | contractNo | eName        |
+| NIN      | contractNo | hoursPerWeek |
 | -------- | ---------- | ------------ |
-| 113567WD | C1024      | John Smith   |
-| 234111XA | C1024      | Diane Hocine |
-| 712670YD | C1025      | Sarah White  |
-| 113567WD | C1025      | John Smith   |
+| 113567WD | C1024      | 16           |
+| 234111XA | C1024      | 24           |
+| 712670YD | C1025      | 28           |
+| 113567WD | C1025      | 16           |
 
-_Primery Key is NIN_
+| NIN      | eName        |
+| -------- | ------------ |
+| 113567WD | John Smith   |
+| 234111XA | Diane Hocine |
+| 712670YD | Sarah White  |
+| 113567WD | John Smith   |
+
 
 | NIN      | hoursPerWeek | hotelNo |
 | -------- | ------------ | ------- |
@@ -63,12 +69,16 @@ _Primery Key is NIN_
 | 712670YD | 28           | H4      |
 | 113567WD | 16           | H4      |
 
-_Primery Key is hotelNo_
 
 | hotelNo | hotelLocation |
 | ------- | ------------- |
 | H25     | Edinburgh     |
 | H4      | Glasgow       |
+
+| contractNo | hotelNo |
+| ---------- | ------- |
+| C1024      | H25     |
+| C1025      | H4      |
 
 > Exercise 3
 
@@ -82,25 +92,31 @@ _Primery Key is hotelNo_
 | E002        | Bob   | J03      | Bartender | 56         | Wyoming    |
 | E003        | Alice | J01      | Chef      | 56         | Wyoming    |
 
-`3NF`
+`Solution`
 
 _Primery Key is EMPLOYEE_ID_
 
-| EMPLOYEE_ID | NAME  |
-| ----------- | ----- |
-| E001        | Alice |
-| E002        | Bob   |
-| E003        | Alice |
+| EMPLOYEE_ID | NAME  | STATE_CODE |
+| ----------- | ----- | ---------- |
+| E001        | Alice | 26         |
+| E002        | Bob   | 56         |
+| E003        | Alice | 56         |
 
 _Primery Key is EMPLOYEE_ID and JOB_CODE_
 
-| EMPLOYEE_ID | JOB_CODE | JOB       | STATE_CODE |
-| ----------- | -------- | --------- | ---------- |
-| E001        | J01      | Chef      | 26         |
-| E001        | J02      | Waiter    | 26         |
-| E002        | J02      | Waiter    | 56         |
-| E002        | J03      | Bartender | 56         |
-| E003        | J01      | Chef      | 56         |
+| EMPLOYEE_ID | JOB_CODE |
+| ----------- | -------- |
+| E001        | J01      |
+| E001        | J02      |
+| E002        | J02      |
+| E002        | J03      |
+| E003        | J01      |
+
+| JOB_CODE | JOB       | 
+| -------- | --------- | 
+| J01      | Chef      | 
+| J02      | Waiter    |  
+| J03      | Bartender |  
 
 _Primery Key is STATE_CODE_
 
@@ -121,7 +137,7 @@ _Primery Key is STATE_CODE_
 | Anna Karenina                         | Literary Fiction        | Leo Tolstoy  | Russian            |
 | A Confession                          | Religious Autobiography | Leo Tolstoy  | Russian            |
 
-`2NF`
+`Solution`
 
 _Primery Key is Genre_
 
@@ -135,13 +151,21 @@ _Primery Key is Genre_
 
 _Primery Key is Author_
 
-| Author       | Author Nationality | Book                                  |
-| ------------ | ------------------ | ------------------------------------- |
-| Jules Verne  | French             | Twenty Thousand Leagues Under the Sea |
-| Jules Verne  | French             | Journey to the Center of the Earth    |
-| Walt Whitman | American           | Leaves of Grass                       |
-| Leo Tolstoy  | Russian            | Anna Karenina                         |
-| Leo Tolstoy  | Russian            | A Confession                          |
+| Author       | Author Nationality |
+| ------------ | ------------------ |
+| Jules Verne  | French             |
+| Jules Verne  | French             |
+| Walt Whitman | American           |
+| Leo Tolstoy  | Russian            |
+| Leo Tolstoy  | Russian            |
+
+| Book                                  | Author       |
+| ------------------------------------- | ------------ |
+| Twenty Thousand Leagues Under the Sea | Jules Verne  |
+| Journey to the Center of the Earth    | Jules Verne  |
+| Leaves of Grass                       | Walt Whitman |
+| Anna Karenina                         | Leo Tolstoy  |
+| A Confession                          | Leo Tolstoy  |
 
 > Exercise 5
 
@@ -155,34 +179,38 @@ _Primery Key is Author_
 | U5     | St2       | 05.05.03 | Tut3    | PhF   | 632  | 4.9   | Dümmlers  | tut3@fhbb.ch |
 | U4     | St2       | 04.07.03 | Tut5    | AVQ   | 621  | 5.0   | SwissTopo | tut5@fhbb.ch |
 
-`3NF`
+`Solution`
 
 _Primery Key is UnitID and StudentID_
 
-| UnitID | StudentID | Date     |
-| ------ | --------- | -------- |
-| U1     | St1       | 23.02.03 |
-| U2     | St1       | 18.11.02 |
-| U1     | St4       | 23.02.03 |
-| U5     | St2       | 05.05.03 |
-| U4     | St2       | 04.07.03 |
+| UnitID | StudentID | Date     | TutorID | 
+| ------ | --------- | -------- | ------- | 
+| U1     | St1       | 23.02.03 | Tut1    | 
+| U2     | St1       | 18.11.02 | Tut3    | 
+| U1     | St4       | 23.02.03 | Tut1    | 
+| U5     | St2       | 05.05.03 | Tut3    | 
+| U4     | St2       | 04.07.03 | Tut5    | 
 
-_Primery Key is UnitID and TutorID_
+_Primery Key is TutorID_
 
-| UnitID | TutorID | Topic | Room | Book      | TutEmail     |
-| ------ | ------- | ----- | ---- | --------- | ------------ |
-| U1     | Tut1    | GMT   | 629  | Deumlich  | tut1@fhbb.ch |
-| U2     | Tut3    | Gln   | 631  | Zehnder   | tut3@fhbb.ch |
-| U1     | Tut1    | GMT   | 629  | Deumlich  | tut1@fhbb.ch |
-| U5     | Tut3    | PhF   | 632  | Dümmlers  | tut3@fhbb.ch |
-| U4     | Tut5    | AVQ   | 621  | SwissTopo | tut5@fhbb.ch |
+| TutorID | TutEmail     |
+| ------- | ------------ |
+| Tut1    | tut1@fhbb.ch |
+| Tut3    | tut3@fhbb.ch |
+| Tut5    | tut5@fhbb.ch |
 
-_Primery Key is StudentID and TutorID_
+| UnitID | Topic | Book      | Room |
+| ------ | ----- | --------- | ---- |
+| U1     | GMT   | Deumlich  | 629  |
+| U2     | Gln   | Zehnder   | 631  |
+| U5     | PhF   | Dümmlers  | 632  |
+| U4     | AVQ   | SwissTopo | 621  |
 
-| StudentID | TutorID | Grade |
-| --------- | ------- | ----- |
-| St1       | Tut1    | 4.7   |
-| St1       | Tut3    | 5.1   |
-| St4       | Tut1    | 4.3   |
-| St2       | Tut3    | 4.9   |
-| St2       | Tut5    | 5.0   |
+| UnitID | StudentID | Grade | 
+| ------ | --------- | ----- | 
+| U1     | St1       | 4.7   | 
+| U2     | St1       | 5.1   | 
+| U1     | St4       | 4.3   | 
+| U5     | St2       | 4.9   | 
+| U4     | St2       | 5.0   | 
+
