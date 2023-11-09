@@ -1,4 +1,4 @@
-tests
+tests*
 .git
 .vscode
 .DS_Store
