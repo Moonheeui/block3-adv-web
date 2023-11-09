@@ -1,1 +1,52 @@
-Hi!
+taco cat
+tacocat
+
+adam does thins
+adamdoesthings
+sgnihtseodmada
+ada
+ada
+
+
+taco   ..cat.
+i=0 t b=12 .
+i=1 a b=11 t
+i=2 c b=10 a
+i=3 o b= 9 c
+1=4 _ b= 8 .
+1=5 _ b= 7 .
+
+
+
+
+if (character == ""  || character == ".") {
+    // skip
+} else {
+    // add to my phase
+}
+
+
+// Same code
+if (!(character == ""  || character == ".")) {
+    // add to my phase
+}
+
+if (character !== ""  && character !== ".") {
+    // add to my phase
+}
+
+NOT a (SPACE OR PERIOD)
+NOT a SPACE AND NOT a PERIOD
+
+
+// For LOOP
+if
+
+
+// Right Click "Open in Integrated termianl" in the terminal
+Type "git status
+Type "git branch" and  enter
+Type "git checkout -b assignments" and enter
+
+// In the Source Control
+Click "Checkout to"
