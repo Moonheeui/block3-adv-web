@@ -9,10 +9,10 @@
 </head>
 <body>
     <h1>
-    <?php
+    <!-- <?php
         echo "GET: " $_GET['controller'];
         echo "<br/>POST:" . $_POST
-    ?>
+    ?> -->
 
     <!-- <form action="index.php" method="get">
         <label for="">GET</label>
@@ -25,22 +25,6 @@
         <input type="text" name="controller" id="controller">
         <input type="submit" value="Submit">
     </form> -->
-
-    <?php
-
-    if($_GET['controller'] == "home"){
-        include('views/wecome.php');
-    } else if($_GET['controller'] == "dashboard") {
-        include("views/dashboard.php");
-    } else if($_GET['controller'] == "login") {
-        include("views/login.php");
-    } else if($_GET['controller'] == "logout") {
-        include("views/logout.php");
-    } else {
-        include("views/404.php")
-    }
-
-    ?>
 
     <?php
     require_once 'controllers/controller.php';
