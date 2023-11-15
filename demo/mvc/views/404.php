@@ -1,1 +1,1 @@
-Error code, 404
+404 - Not Found!!!
