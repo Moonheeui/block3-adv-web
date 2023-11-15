@@ -1,28 +1,108 @@
 @startuml
 
-class Id {
-    #name
-    #dob
-    #address
-    #expiration
-    +__construct()
-    +present()
-    +renew()
-    +update()
-    +cancel()   
+class Animal {
+    +makeSound()   
 }
 
-class DriversLicense extends Id {
-    -classType
-    -points
-    -fees
-    +isValid()
-    +viewPoints()
-    +reprimend()
-    +payFees()
-    +setType()
-    +setExpiration()
-    +renew()
+class Cat extends Animal {
+    +makeSound()
 }
+
+
+class Vehicle {
+    +drive()
+}   
+
+class Car extends Vehicle {
+    +drive()
+}
+
+
+class Shape {
+    +getArea()
+}
+
+class Rectangle extends Shape {
+    +getArea()
+}
+
+
+class Employee {
+    +work()
+    +getSalary()
+}
+
+class HRManager extends Employee {
+    +work()
+    +addEmployee()
+}
+
+
+class BankAccount {
+    +deposit()
+    -withdraw()
+}
+
+class SavingsAccount extends BankAccount {
+    +deposit()
+    -withdraw(100)
+}
+
+
+class Animal1 {
+    +move()
+}
+
+class Cheetah extends Animal1 {
+    +move()
+}
+
+
+class Person {
+    +getFirstName()
+    +getLastName()
+}
+
+class Employee2 extends Person {
+    +getEmployeeId()
+    +getLastName()
+}
+
+class Shape2 {
+    +getPerimeter()
+    +getArea()
+}
+
+class Circle extends Shape2 {
+    +getPerimeter()
+    +getArea()
+}
+
+
+class Vehicle2 {
+    +getClass()
+}
+
+class Truck extends Vehicle2 {
+    +getClass()
+}
+
+
+class Employee3 {
+    +getSalary()
+    +getEmployeeId()
+}
+
+class Manager extends Employee3 {
+    +getName()
+    +getAddress()
+    +getSalary()
+    +getJobtitle()
+    +getBonus()
+    +performanceReports()
+    +projects()
+    
+}
+
 
 @enduml
