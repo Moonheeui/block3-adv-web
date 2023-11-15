@@ -1,0 +1,28 @@
+@startuml
+
+class Id {
+    #name
+    #dob
+    #address
+    #expiration
+    +__construct()
+    +present()
+    +renew()
+    +update()
+    +cancel()   
+}
+
+class DriversLicense extends Id {
+    -classType
+    -points
+    -fees
+    +isValid()
+    +viewPoints()
+    +reprimend()
+    +payFees()
+    +setType()
+    +setExpiration()
+    +renew()
+}
+
+@enduml
