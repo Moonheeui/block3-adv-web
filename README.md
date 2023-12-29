@@ -10,7 +10,7 @@
 
 Example of a block of code using 3 `s
 
-```
+```text
 echo "hi! ";
 echo "hello ";
 echo "world!";
