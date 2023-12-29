@@ -25,9 +25,9 @@ class DeskLamp
     {
         return $this->cableLength;
     }
-    public function setCableLength($cableLength)
+    public function setCableLength($connection)
     {
-        $this->cableLength = $cableLength;
+        $this->cableLength = $connection;
     }
     public function cableConnect()
     {
