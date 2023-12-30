@@ -11,7 +11,7 @@ class DeskLamp
     public $cableLength = "1.5m";
     private $switch1;
     private $switch2 = 0;
-    private $isActive = false; // the lamp on.
+    private $isOn = false; // the lamp on.
 
     public function __construct($name, $size, $color, $finish, $cableLength)
     {
@@ -42,21 +42,21 @@ class DeskLamp
     {
         return $this->switch1;
     }
-    private function setSwitch1($isActive)
+    private function setSwitch1($turnOn)
     {
-        $this->switch1 = $isActive;
+        $this->switch1 = $turnOn;
     }
     public function ask()
     {
         return "switch1: " . $this->getSwitch1() . " switch2: " . $this->switch2;
     }
-    public function isActive()
+    public function pushButton()
     {
-        return $this->isActive;
+        $this->isOn = !$this->isOn;
     }
-    public function action($data)
+    public function pushSwitch1()
     {
-        $this->setSwitch1($data);
+        $this->switch1 = ($this->switch1 + 1) % 2;
     }
 }
 
@@ -71,6 +71,6 @@ echo "Finish: " . $deskLamp->finish . "</br>";
 echo "Cable Length: " . $deskLamp->cableLength . "</br>";
 echo $deskLamp->cableConnect() . "</br>";
 echo "</br>";
-$deskLamp->action("active");
+$deskLamp->pushSwitch1("active");
 echo $deskLamp->ask();
-echo "</br> Swith Status: ", $deskLamp->isActive() ? "active" : "not active";
+echo "</br> Swith Status: ", $deskLamp->pushSwitch1() ? "active" : "not active";
