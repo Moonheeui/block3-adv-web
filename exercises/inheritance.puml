@@ -1,0 +1,160 @@
+@startuml
+
+class Animal {
+    + makeSound()
+}
+
+class Cat extends Animal {
+    makeSound()
+}
+
+class Vehicle {
+    drive()
+}   
+
+class Car extends Vehicle {
+    drive()
+}
+
+class Shape {
+    getArea()
+}
+
+class Rectangle extends Shape {
+    -length;
+    -width;
+    __construct()
+    getArea()
+}
+
+class Employee {
+    -salary;
+    __construct()
+    +work()
+    +getSalary()
+}
+
+class HRManager extends Employee {
+    __construct()
+    +work()
+    +addEmployee()
+}
+
+class BankAccount {
+    -accountNumber;
+    -balance;
+    __construct()
+    +deposit(amount)
+    +withdraw(amount)
+    +getBalance()
+}
+
+class SavingsAccount extends BankAccount {
+    __construct()
+    withdraw(amount)
+}
+
+class Animal1 {
+    move()
+}
+
+class Cheetah extends Animal1 {
+    move()
+}
+
+class Person {
+    -firstName;
+    -lastName;
+    __construct()
+    +getFirstName()
+    +getLastName()
+}
+
+class Employee1 extends Person {
+    -employeeID;
+    -jobTitle;
+    __construct()
+    +getEmployeeId()
+    +getLastName()
+}
+
+class Shape1 {
+    +getPerimeter()
+    +getArea()
+}
+
+class Circle extends Shape1 {
+    -radius;
+    __construct()
+    +getPerimeter()
+    +getArea()
+}
+
+abstract class Vehicle1 {
+    -make;
+    -model;
+    -year;
+    -fuelType;
+    -fuelEfficiency;
+    __construct()
+    +getMake()
+    +getModel()
+    +getYear()
+    +getFuelType()
+    +getFuelEfficiency()
+    +abstract calculateFuelEfficiency()
+    +abstract calculateTripDistance()
+    +abstract getMaxSpeed()
+}
+
+class Truck extends Vehicle1 {
+    -cargoCapacity;
+    __construct()
+    +getCargoCapacity()
+    +calculateFuelEfficiency()
+    +calculateTripDistance()
+    +getMaxSpeed()
+}
+
+class Motorcycle extends Vehicle1 {
+    -engineSize;
+    __construct()
+    +getEngineSize()
+    +calculateFuelEfficiency()
+    +calculateTripDistance()
+    +getMaxSpeed()
+}
+
+class Employee2 {
+    -name;
+    -address;
+    -salary;
+    -jobTitle;
+    __construct()
+    +getName()
+    +getAddress()
+    +getSalary()
+    +getJobtitle()
+    +calculateBonus()
+    +generatePerformanceReport()
+}
+
+class Manager extends Employee2 {
+    -department;
+    __construct()
+    +getDepartment()
+    +calculateBonus()
+    +generatePerformanceReport()
+    +manageProject()
+}
+
+class Developer extends Employee2 {
+    -programmingLanguage;
+    __construct()
+    +getProgrammingLanguage()
+    +calculateBonus()
+    +generatePerformanceReport()
+    +writeCode()
+}
+
+@enduml
