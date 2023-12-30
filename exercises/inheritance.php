@@ -184,22 +184,24 @@ class SavingAccount extends BankAccount
     }
 }
 
-echo "Create a Bank Account object (A/c No. BA1234) with initial balance of $500:";
+echo "Create a Bank Account object (A/c No. BA1234) with initial balance of $500: <br>";
 //Create a BankAccount object (A/c No. "BA1234") with initial balance of $500
 $BA1234 = new BankAccount("BA1234", 500);
 
 // Deposit $1000 into account BA1234
-echo "Deposit $1000 into account BA1234:";
+echo "Deposit $1000 into account BA1234: <br>";
 $BA1234->deposit(1000);
-echo "New balance after depositing $1000: $" . $BA1234->getBalance();
+echo "New balance after depositing $1000: $" . $BA1234->getBalance() . "<br>";
 
 // Withdraw $600 from account BA1234
-echo "Withdraw $600 from account BA1234:";
+echo "Withdraw $600 from account BA1234: <br>";
 $BA1234->withdraw(600);
-echo "New balance after withdrawing $600: $" . $BA1234->getBalance();
+echo "New balance after withdrawing $600: $" . $BA1234->getBalance() . "<br>";
+
+echo "<br>";
 
 // Create a SavingAccount object (A/c No. SA1234) with initial balance of $500
-echo "Create a SavingAccount object (A/c No. SA1234) with initial balance of $500:";
+echo "Create a SavingAccount object (A/c No. SA1234) with initial balance of $500: <br>";
 $SA1234 = new SavingAccount("SA1234", 500);
 
 // Withdraw $600 from account SA1234
@@ -321,6 +323,8 @@ echo "The radius of the circle is ", $radius, '<br>';
 echo "The perimeter of the circle is ", $circle->getPerimeter(), '<br>';
 echo "The area of the circle is ", $circle->getArea(), '<br>';
 
+echo "<br>";
+
 $radius2 = 10.0;
 $circle2 = new Circle($radius2);
 echo "The radius of the circle is ", $radius2, '<br>';
@@ -429,19 +433,21 @@ class Motorcycle extends Vehicle1
 
 // Create instances of each vehicle type
 $truck = new Truck("Ford", "F-150", 2018, "Diesel", 10.0, 1000);
-echo "Truck: ", $truck->getMake();
-echo "Truck Model: " . $truck->getModel();
-echo "Year: " . $truck->getYear();
-echo "Fuel Efficiency: " . $truck->getFuelEfficiency() . " mpg";
-echo "Trip Distance: " . $truck->calculateFuelEfficiency() . " miles";
-echo "Max Speed: " . $truck->getMaxSpeed() . " mph\n";
+echo "Truck: ", $truck->getMake() . "<br>";
+echo "Truck Model: " . $truck->getModel() . "<br>";
+echo "Year: " . $truck->getYear() . "<br>";
+echo "Fuel Efficiency: " . $truck->getFuelEfficiency() . " mpg" . "<br>";
+echo "Trip Distance: " . $truck->calculateFuelEfficiency() . " miles" . "<br>";
+echo "Max Speed: " . $truck->getMaxSpeed() . " mph\n" . "<br>";
 
-$motorcycle = new Motorcycle("Honda", "CBR500R", 2018, "Gasoline", 50.0, 500);
-echo "Motorcycle: ", $motorcycle->getMake();
-echo "Motorcycle Model: " . $motorcycle->getModel();
-echo "Year: " . $motorcycle->getYear();
-echo "Fuel Efficiency: " . $motorcycle->getFuelEfficiency() . " mpg";
-echo "Trip Distance: " . $motorcycle->calculateFuelEfficiency() . " miles";
+echo "<br>";
+
+$motorcycle = new Motorcycle("Honda", "CBR500R", 2020, "Gasoline", 50.0, 500);
+echo "Motorcycle: ", $motorcycle->getMake() . "<br>";
+echo "Motorcycle Model: " . $motorcycle->getModel() . "<br>";
+echo "Year: " . $motorcycle->getYear() . "<br>";
+echo "Fuel Efficiency: " . $motorcycle->getFuelEfficiency() . " mpg" . "<br>";
+echo "Trip Distance: " . $motorcycle->calculateFuelEfficiency() . " miles" . "<br>";
 echo "Max Speed: " . $motorcycle->getMaxSpeed() . " mph\n";
 
 echo "<hr>";
@@ -478,17 +484,13 @@ class Employee2
     {
         return $this->jobTitle;
     }
-
     public function calculateBonus()
     {
-        return $this->salary * 0.1;
+        return 0.0;
     }
     public function generatePerformanceReport()
     {
-        echo "Performance report for " . $this->name . ":\n";
-        echo "Job Title: " . $this->jobTitle . "\n";
-        echo "Salary: $" . $this->salary . "\n";
-        echo "Bonus: $" . $this->calculateBonus() . "\n";
+        return "No performance report available.";
     }
 }
 
@@ -512,7 +514,7 @@ class Manager extends Employee2
     }
     public function generatePerformanceReport()
     {
-        return "Performance report for " . $this->getName() . ": Good!";
+        return "Performance report for Manager " . $this->getName() . ": Good!";
     }
     public function manageProject()
     {
@@ -544,7 +546,7 @@ class Developer extends Employee2
     public function generatePerformanceReport()
     {
         // Custom implementation for performance report for developers
-        return "Performance report for Developer " . $this->getName() . ": Good";
+        return "Performance report for Developer " . $this->getName() . ": Good!";
     }
 
     public function writeCode()
@@ -555,13 +557,13 @@ class Developer extends Employee2
 }
 
 $manager = new Manager("Avril Aroldo", "1 ABC St", 80000.0, "Manager", 5);
+echo "Manager's Bonus: $" . $manager->calculateBonus() . "<br>";
+echo $manager->generatePerformanceReport() . "<br>";
+$manager->manageProject() . "<br>";
+
+echo "<br>";
+
 $developer = new Developer("Iver Dipali", "2 PQR St", 72000.0, "Developer", "php");
-
-echo "Manager's Bonus: $" . $manager->calculateBonus();
-echo "Developer's Bonus: $" . $developer->calculateBonus();
-
-echo $manager->generatePerformanceReport();
-echo $developer->generatePerformanceReport();
-
-$manager->manageProject();
+echo "Developer's Bonus: $" . $developer->calculateBonus() . "<br>";
+echo $developer->generatePerformanceReport() . "<br>";
 $developer->writeCode();
