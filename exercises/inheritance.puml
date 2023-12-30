@@ -1,108 +1,160 @@
 @startuml
 
 class Animal {
-    +makeSound()   
+    + makeSound()
 }
 
 class Cat extends Animal {
-    +makeSound()
+    makeSound()
 }
 
-
 class Vehicle {
-    +drive()
+    drive()
 }   
 
 class Car extends Vehicle {
-    +drive()
+    drive()
 }
 
-
 class Shape {
-    +getArea()
+    getArea()
 }
 
 class Rectangle extends Shape {
-    +getArea()
+    -length;
+    -width;
+    __construct()
+    getArea()
 }
 
-
 class Employee {
+    -salary;
+    __construct()
     +work()
     +getSalary()
 }
 
 class HRManager extends Employee {
+    __construct()
     +work()
     +addEmployee()
 }
 
-
 class BankAccount {
-    +deposit()
-    -withdraw()
+    -accountNumber;
+    -balance;
+    __construct()
+    +deposit(amount)
+    +withdraw(amount)
+    +getBalance()
 }
 
 class SavingsAccount extends BankAccount {
-    +deposit()
-    -withdraw(100)
+    __construct()
+    withdraw(amount)
 }
 
-
 class Animal1 {
-    +move()
+    move()
 }
 
 class Cheetah extends Animal1 {
-    +move()
+    move()
 }
 
-
 class Person {
+    -firstName;
+    -lastName;
+    __construct()
     +getFirstName()
     +getLastName()
 }
 
-class Employee2 extends Person {
+class Employee1 extends Person {
+    -employeeID;
+    -jobTitle;
+    __construct()
     +getEmployeeId()
     +getLastName()
 }
 
-class Shape2 {
+class Shape1 {
     +getPerimeter()
     +getArea()
 }
 
-class Circle extends Shape2 {
+class Circle extends Shape1 {
+    -radius;
+    __construct()
     +getPerimeter()
     +getArea()
 }
 
-
-class Vehicle2 {
-    +getClass()
+abstract class Vehicle1 {
+    -make;
+    -model;
+    -year;
+    -fuelType;
+    -fuelEfficiency;
+    __construct()
+    +getMake()
+    +getModel()
+    +getYear()
+    +getFuelType()
+    +getFuelEfficiency()
+    +abstract calculateFuelEfficiency()
+    +abstract calculateTripDistance()
+    +abstract getMaxSpeed()
 }
 
-class Truck extends Vehicle2 {
-    +getClass()
+class Truck extends Vehicle1 {
+    -cargoCapacity;
+    __construct()
+    +getCargoCapacity()
+    +calculateFuelEfficiency()
+    +calculateTripDistance()
+    +getMaxSpeed()
 }
 
-
-class Employee3 {
-    +getSalary()
-    +getEmployeeId()
+class Motorcycle extends Vehicle1 {
+    -engineSize;
+    __construct()
+    +getEngineSize()
+    +calculateFuelEfficiency()
+    +calculateTripDistance()
+    +getMaxSpeed()
 }
 
-class Manager extends Employee3 {
+class Employee2 {
+    -name;
+    -address;
+    -salary;
+    -jobTitle;
+    __construct()
     +getName()
     +getAddress()
     +getSalary()
     +getJobtitle()
-    +getBonus()
-    +performanceReports()
-    +projects()
-    
+    +calculateBonus()
+    +generatePerformanceReport()
 }
 
+class Manager extends Employee2 {
+    -department;
+    __construct()
+    +getDepartment()
+    +calculateBonus()
+    +generatePerformanceReport()
+    +manageProject()
+}
+
+class Developer extends Employee2 {
+    -programmingLanguage;
+    __construct()
+    +getProgrammingLanguage()
+    +calculateBonus()
+    +generatePerformanceReport()
+    +writeCode()
+}
 
 @enduml
