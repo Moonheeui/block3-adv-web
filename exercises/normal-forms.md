@@ -1,4 +1,4 @@
-# Exercise 1
+> Exercise 1
 
 ## Patient Dental Appointments
 
@@ -49,7 +49,7 @@ _Primary Key is staffNo_
 
 > Exercise 2
 
-**Employees of InstantCover and Contracts to work at hotels**
+## Employees of InstantCover and Contracts to work at hotels**
 
 | NIN      | contractNo | hoursPerWeek | eName        | hotelNo | hotelLocation |
 | -------- | ---------- | ------------ | ------------ | ------- | ------------- |
@@ -129,7 +129,7 @@ _Primery Key is EMPLOYEE_ID_
 
 > Exercise 4
 
-**Book**
+## Book
 
 | Book                                  | Genre                   | Author       | Author Nationality |
 | ------------------------------------- | ----------------------- | ------------ | ------------------ |
@@ -167,7 +167,7 @@ _Primery Key is EMPLOYEE_ID_
 
 > Exercise 5
 
-**Students and their grades in different topics**
+## Students and their grades in different topics
 
 | UnitID | StudentID | Date     | TutorID | Topic | Room | Grade | Book      | TutEmail     |
 | ------ | --------- | -------- | ------- | ----- | ---- | ----- | --------- | ------------ |
