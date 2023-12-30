@@ -4,14 +4,14 @@
 
 - `basics.php` : php basics
 - palindrome.php : palindrome exercise
-- objects-absics.php : OOP Intro
-- objects-generic.php : Generic version of an Object / class
+- objects-basics.php : OOP Intro
+- objects-generic.php : class version of an object / class
 - logic.php : using invert / not of an expression
 
-Example of a block of code using 3 `s
+Example of a block of code using 3`s
 
-```
-echo "hi! ";
-echo "hello ";
-echo "world!";
+```text
+echo "hi!";
+echo "hello!";
+echo "world!;
 ```
