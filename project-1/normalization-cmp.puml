@@ -1,0 +1,48 @@
+@startuml
+
+class Models {
+    # modelID
+    - modelName
+    - partID
+    - brandID
+    - partPrice
+    - partStock
+    - compatibilityList = array(intel & amd, universal)
+
+    + __construct(modelID, modelName, partID, brandID, partPrice, partStock, compatibilityList)
+    + getModelID()
+    + setModelID()
+    + getModelName()
+    + setModelName()
+    + getBrandID()
+    + setBrandID()
+    + getPartID()
+    + setPartID()
+    + getPartPrice()
+    + setPartPrice()
+    + getPartStock()
+    + setPartStock()
+    + getCompatibilityList()
+    + setCompatibility(modelID)
+}
+
+class Brand extends Models{
+    - brandID
+    - brandName
+    + __construct(brandID, brandName)
+    + getBrandID()
+    + setBrandID()
+    + getBrandName()
+    + setBrandName()
+}
+
+class Part extends Models {
+    - partID
+    - partName
+    + __construct(partID, partName)
+    + getPartID()
+    + setPartID()
+    + getPartName()
+    + setPartName()
+}
+@enduml
