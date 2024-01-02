@@ -3,3 +3,4 @@ tests*
 .vscode
 .DS_Store
 ._*
+connection.php
