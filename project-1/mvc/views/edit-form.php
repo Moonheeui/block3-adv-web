@@ -1,0 +1,36 @@
+<form method="POST" action="?action=edit">
+    <input type="hidden" name="modelID" value="<?php echo $modelInfo['modelID']; ?>">
+    <input type="text" name="modelName" value="<?php echo $modelInfo['modelName']; ?>">
+    <select name="partID" id="partID">
+        <?php
+        foreach ($parts as $part) {
+            echo "<option value=" . $part['partID'] . " ";
+            echo $modelInfo['partID'] == $part['partID'] ? "selected" : " ";
+            echo ">" . $part['partName'] . "</option>";
+        }
+        ?>
+    </select>
+    <select name="brandID" id="brandID">
+        <?php
+        foreach ($brands as $brand) {
+            echo "<option value=" . $brand['brandID'] . " ";
+            echo $modelInfo['brandID'] == $brand['brandID'] ? "selected" : " ";
+            echo ">" . $brand['brandName'] . "</option>";
+        }
+        ?>
+    </select>
+    <select name="compatibilityID" id="compatibilityID">
+        <?php
+        foreach ($compatibilities as $compatibility) {
+            echo "<option value=" . $compatibility['compatibilityID'] . " ";
+            echo $modelInfo['compatibilityID'] == $compatibility['compatibilityID'] ? "selected" : " ";
+            echo ">" . $compatibility['compatibilityName'] . "</option>";
+        }
+        ?>
+    </select>
+
+    <input type="text" name="price" value="<?php echo $modelInfo['price']; ?>">
+    <input type="text" name="stock" value="<?php echo $modelInfo['stock']; ?>">
+    <input type="submit" name="resubmit" value="Changed the Model">
+    <input type="button" onclick="window.location.href='index.php';" value="Reset">
+</form>
