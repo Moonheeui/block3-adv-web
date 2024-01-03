@@ -20,9 +20,7 @@
 
     <?php
 
-    ini_set('display_errors', 1);
-
-    include_once 'mvc/controllers/controller.php';
+    include_once("mvc/controllers/controller.php");
 
     ?>
 
