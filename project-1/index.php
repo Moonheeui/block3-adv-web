@@ -22,12 +22,7 @@
 
     ini_set('display_errors', 1);
 
-    include_once 'controllers/controller.php';
-
-    // $connection = new connectionObject("localhost", "moonhee42_adv_web_user", "3V3o8u3^d", "moonhee42_adv_web");
-    // $controller = new Controller($connection);
-    // $controller->showModel();
-    // $controller->showForm();
+    include_once 'mvc/controllers/controller.php';
 
     ?>
 

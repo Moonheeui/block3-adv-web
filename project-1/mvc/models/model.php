@@ -43,6 +43,21 @@ class usrModel
         }
     }
 
+    public function selectModel()
+    {
+        $mysqli = $this->connect();
+        if ($mysqli) {
+            $result = $mysqli->query("SELECT * FROM `models` ORDER BY modelID ASC;");
+            while ($row = $result->fetch_assoc()) {
+                $results[] = $row;
+            }
+            $mysqli->close();
+            return $results;
+        } else {
+            return false;
+        }
+    }
+
     public function selectPart()
     {
         $mysqli = $this->connect();

@@ -12,10 +12,14 @@ class Controller
     {
         $this->model = new usrModel($connection);
     }
-    public function showModel()
+    public function showAll()
     {
         $models = $this->model->selectAll();
         include 'views/home.php';
+    }
+    public function getModel()
+    {
+        return $this->model->selectModel();
     }
     public function getPart()
     {
@@ -35,8 +39,9 @@ class Controller
         $parts = $this->getPart();
         $brands = $this->getBrand();
         $compatibilities = $this->getCompatibility();
-        include 'views/form.php';
+        include 'mvc/views/form.php';
     }
+
     public function addModel()
     {
         $modelName = $_POST['modelName'];
@@ -55,7 +60,6 @@ class Controller
         } else {
             echo "<p>Could not add models</p>";
         }
-        // $this->showModel();
     }
 
     public function editModelID($id)
@@ -68,7 +72,6 @@ class Controller
             include 'views/edit-form.php';
         } else {
             echo "<p>Could not find model</p>";
-            // $this->showModel();
         }
     }
 
@@ -89,7 +92,6 @@ class Controller
         } else {
             echo "<p>Could not update models</p>";
         }
-        // $this->showModel();
     }
 
     public function deleteModel($id)
@@ -99,11 +101,10 @@ class Controller
         } else {
             echo "<p>Could not delete models</p>";
         }
-        // $this->showModel();
     }
 }
 
-$connection2 = new connectionObject($host, $username, $password, $database);
+$connection = new connectionObject($host, $username, $password, $database);
 $controller = new Controller($connection);
 
 if (isset($_POST['submit'])) {
