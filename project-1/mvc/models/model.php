@@ -109,7 +109,7 @@ class usrModel
     {
         $mysqli = $this->connect();
         if ($mysqli) {
-            $mysqli->query("INSERT INTO models (modelName, partID, brandID, partID, compatibilityID, price, stock) VALUES ('?', '?', '?', '?', '?', '?','?')");
+            $mysqli->query("INSERT INTO models (modelName, partID, brandID, compatibilityID, price, stock) VALUES ('$modelName', '$partID', '$brandID', '$compatibilityID', '$price', '$stock')");
             $mysqli->close();
             return true;
         } else {
