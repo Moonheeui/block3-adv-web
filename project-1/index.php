@@ -17,8 +17,12 @@
 <body>
 
     <h1>MVC - Computer Builder</h1>
+    <!-- <a class="btn-model" href="?action=show">View Models</a>
+    <a class="btn-modol" href="?action=show">View Price</a>
+    <a class="btn-model" href="?action=show">View Added Models</a> -->
 
     <?php
+    ini_set('display_errors', 1);
 
     include_once("mvc/controllers/controller.php");
 
