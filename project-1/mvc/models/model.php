@@ -1,5 +1,7 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 class connectionObject
 {
     public function __construct(public $host, public $username, public $password, public $database)
@@ -107,7 +109,7 @@ class usrModel
     {
         $mysqli = $this->connect();
         if ($mysqli) {
-            $mysqli->query("INSERT INTO models (modelName, partID, brandID, partID, compatibilityID, price, stock) VALUES ('$modelName', '$partID', '$brandID', '$compatibilityID', '$price', '$stock')");
+            $mysqli->query("INSERT INTO models (modelName, partID, brandID, partID, compatibilityID, price, stock) VALUES ('?', '?', '?', '?', '?', '?','?')");
             $mysqli->close();
             return true;
         } else {

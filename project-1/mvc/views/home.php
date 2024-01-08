@@ -1,29 +1,45 @@
-<h2>All Models</h2>
+<h3>Added New Models</h3>
 
 <article>
     <?php
     if ($models) {
+        echo '<table>';
+        echo '<tr><th>ID</th><th>Model Name</th><th>Part Name</th><th>Brand Name</th><th>Compatiblility</th><th>Price</th><th>Stock</th><th>Modify</th></tr>';
+
         foreach ($models as $model) {
-            echo "<section class='card'>
-                        <div class='top'>
-                            <div class='id'>" . $model['modelID'] . "</div>
-                            <div class='name'>" . $model['modelName'] . "</div>
-                            <div class='part'>" . $model['partName'] . "</div>
-                            <div class='brand'>" . $model['brandName'] . "</div>
-                            <div class='compatibility'>" . $model['compatibilityName'] . "</div>
-                            <div class='price'>" . $model['price'] . "</div>
-                            <div class='stock'>" . $model['stock'] . "</div>
-                        </div>
-                        <div class='buttons'>
-                            <form method='POST'>
-                                <input type='hidden' name='modelID' value='" . $model['modelID'] . "'>
-                                <div class='button-container'>
-                                    <input type='submit' name='editModelID' value='Edit'  class='submit-button'>
-                                </div>
-                            </form>
-                        </div>
-                    </section>";
+            echo '<tr>';
+            echo '<td>' . $model['modelID'] . '</td>';
+            echo '<td>' . $model['modelName'] . '</td>';
+            echo '<td>' . $model['partName'] . '</td>';
+            echo '<td>' . $model['brandName'] . '</td>';
+            echo '<td>' . $model['compatibilityName'] . '</td>';
+            echo '<td>' . $model['price'] . '</td>';
+            echo '<td>' . $model['stock'] . '</td>';
+            echo '<td>';
+
+            // Edit
+            echo '<form action="" method="post">';
+            echo '<input type="hidden" name="action" value="edit">';
+            echo '<input type="hidden" name="modelID" value="' . $model['modelID'] . '">';
+            echo '<input type="hidden" name="modelName" value="' . $model['modelName'] . '">';
+            echo '<input type="hidden" name="partName" value="' . $model['partName'] . '">';
+            echo '<input type="hidden" name="brandName" value="' . $model['brandName'] . '">';
+            echo '<input type="hidden" name="compatibilityName" value="' . $model['compatibilityName'] . '">';
+            echo '<input type="hidden" name="price" value="' . $model['price'] . '">';
+            echo '<input type="hidden" name="stock" value="' . $model['stock'] . '">';
+            echo '<button id="edit-btn" type="submit">Edit</button>';
+            echo '</form>';
+
+            // Delete
+            echo '<form action="" method="post">';
+            echo '<input type="hidden" name="action" value="delete">';
+            echo '<input type="hidden" name="modelID" value="' . $part['modelID'] . '">';
+            echo '<button id="delete-btn" type="submit">Delete</button>';
+            echo '</form>';
+            echo '</td>';
+            echo '</tr>';
         }
+        echo '</table>';
     } else {
         echo 'No models found';
     }

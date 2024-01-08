@@ -17,10 +17,10 @@ class Controller
         $models = $this->model->selectAll();
         include 'views/home.php';
     }
-    public function getModel()
-    {
-        return $this->model->selectModel();
-    }
+    // public function getModel()
+    // {
+    //     return $this->model->selectModel();
+    // }
     public function getPart()
     {
         return $this->model->selectPart();
@@ -51,20 +51,21 @@ class Controller
         $price = $_POST['price'];
         $stock = $_POST['stock'];
         if (!$modelName || !$partID || !$brandID || !$compatibilityID || !$price || !$stock) {
-            echo "<p>Missing information</p>";
+            echo "<p>Missing info of Model</p>";
             $this->showForm();
             return;
         } else if ($this->model->insertModel($modelName, $partID, $brandID, $compatibilityID, $price, $stock)) {
-            echo "<p>Added a Model: index.php</p>";
+            echo "<p>Added a Model: $modelName successfully</p>";
             exit();
         } else {
             echo "<p>Could not add models</p>";
         }
+        $this->showAll();
     }
 
-    public function editModelID($id)
+    public function editModel($modelID)
     {
-        $modelInfo = $this->model->selectModelID($id);
+        $modelInfo = $this->model->selectModel($modelID);
         $parts = $this->getPart();
         $brands = $this->getBrand();
         $compatibilities = $this->getCompatibility();
@@ -73,34 +74,38 @@ class Controller
         } else {
             echo "<p>Could not find model</p>";
         }
+        $this->showAll();
     }
 
-    public function updateModel($id, $modelName, $partID, $brandID, $compatibilityID, $price, $stock)
+    public function updateModel($modelID, $modelName, $partID, $brandID, $compatibilityID, $price, $stock)
     {
+        $modelID = $_POST['modelID'];
         $modelName = $_POST['modelName'];
         $partID = $_POST['partID'];
         $brandID = $_POST['brandID'];
         $compatibilityID = $_POST['compatibilityID'];
         $price = $_POST['price'];
         $stock = $_POST['stock'];
-        if (!$id || !$modelName || !$partID || !$brandID || !$compatibilityID || !$price || !$stock) {
+        if (!$modelID || !$modelName || !$partID || !$brandID || !$compatibilityID || !$price || !$stock) {
             echo "<p>Missing information</p>";
-            $this->editModelID($id);
+            $this->editModel($modelID);
             return;
-        } else if ($this->model->updateModel($id, $modelName, $partID, $brandID, $compatibilityID, $price, $stock)) {
-            echo "<p>Updated a Model: index.php</p>";
+        } else if ($this->model->updateModel($modelID, $modelName, $partID, $brandID, $compatibilityID, $price, $stock)) {
+            echo "<p>Updated a Model: $modelName successfully</p>";
         } else {
-            echo "<p>Could not update models</p>";
+            echo "<p>Could not update the model</p>";
         }
+        $this->showAll();
     }
 
-    public function deleteModel($id)
+    public function deleteModel($modelID)
     {
-        if ($this->model->deleteModel($id)) {
-            echo "<p>Deleted a Model: index.php</p>";
+        if ($this->model->deleteModel($modelID)) {
+            echo "<p>Deleted a Model: $modelID successfully</p>";
         } else {
-            echo "<p>Could not delete models</p>";
+            echo "<p>Could not delete the model</p>";
         }
+        $this->showAll();
     }
 }
 
@@ -111,24 +116,24 @@ if (isset($_POST['submit'])) {
     $controller->addModel();
     $controller->showForm();
 } else if (isset($_GET['action']) && $_GET['action'] === 'edit' && isset($_GET['modelID'])) {
-    $id = $_GET['modelID'];
-    $controller->editModelID($id);
+    $modelID = $_GET['modelID'];
+    $controller->editModel($modelID);
 } else {
     $controller->showForm();
 }
 
 if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['modelID'])) {
-    $id = $_GET['modelID'];
-    $controller->deleteModel($id);
+    $modelID = $_GET['modelID'];
+    $controller->deleteModel($modelID);
 }
 
 if (isset($_POST['resubmit'])) {
-    $id = $_POST['modelID'];
+    $modelID = $_POST['modelID'];
     $modelName = $_POST['modelName'];
     $partID = $_POST['partID'];
     $brandID = $_POST['brandID'];
     $compatibilityID = $_POST['compatibilityID'];
     $price = $_POST['price'];
     $stock = $_POST['stock'];
-    $controller->updateModel($id, $modelName, $partID, $brandID, $compatibilityID, $price, $stock);
+    $controller->updateModel($modelID, $modelName, $partID, $brandID, $compatibilityID, $price, $stock);
 }
