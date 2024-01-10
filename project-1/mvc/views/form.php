@@ -1,14 +1,6 @@
-<form method="POST">
-    <select name="modelID" id="modelID">
-        <option value="">Select a Model Name</option>
-        <?php
-        if ($models) {
-            foreach ($models as $model) {
-                echo "<option value=" . $model['modelID'] . ">" . $model['modelName'] . "</option>";
-            }
-        }
-        ?>
-    </select>
+<form action="" method="POST">
+    <input type="text" name="modelName" placeholder="Model Name">
+
     <select name="partID" id="partID">
         <option value="">Select a Part Name</option>
         <?php
@@ -41,6 +33,6 @@
     </select>
     <input type="text" name="price" placeholder="Price">
     <input type="text" name="stock" placeholder="Stock">
-    <input type="submit" name="submit" value="Submit">
-    <input type="reset" name="reset" value="Reset">
+    <input id="submit-btn" type="submit" name="submit" value="Submit">
+    <input id="reset-btn" type="button" name="reset" value="Reset">
 </form>

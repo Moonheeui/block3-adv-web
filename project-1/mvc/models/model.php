@@ -9,7 +9,7 @@ class connectionObject
     }
 }
 
-class usrModel
+class userModel
 {
     private $mysqli;
     private $connectionObject;
@@ -34,7 +34,7 @@ class usrModel
     {
         $mysqli = $this->connect();
         if ($mysqli) {
-            $result = $mysqli->query("SELECT * FROM `models` NATURAL JOIN `brands` NATURAL JOIN `parts` NATURAL JOIN `compatibility` ORDER BY models.modelID ASC;");
+            $result = $mysqli->query("SELECT * FROM `models` NATURAL JOIN `parts` NATURAL JOIN `brands` NATURAL JOIN `compatibility` ORDER BY models.modelID ASC;");
             while ($row = $result->fetch_assoc()) {
                 $results[] = $row;
             }
@@ -110,7 +110,6 @@ class usrModel
         $mysqli = $this->connect();
         if ($mysqli) {
             $mysqli->query("INSERT INTO models (modelName, partID, brandID, compatibilityID, price, stock) VALUES ('$modelName', '$partID', '$brandID', '$compatibilityID', '$price', '$stock')");
-            $mysqli->close();
             return true;
         } else {
             return false;
@@ -141,11 +140,23 @@ class usrModel
         }
     }
 
-    public function selectModelID($id)
+    public function insertCompatibility($compatibilityName)
     {
         $mysqli = $this->connect();
         if ($mysqli) {
-            $result = $mysqli->query("SELECT * FROM `models` WHERE modelID = '$id';");
+            $mysqli->query("INSERT INTO compatibility (compatibilityName) VALUES ('$compatibilityName')");
+            $mysqli->close();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function selectModelByID($modelID)
+    {
+        $mysqli = $this->connect();
+        if ($mysqli) {
+            $result = $mysqli->query("SELECT * FROM `models` WHERE modelID = '$modelID';");
             $row = $result->fetch_assoc();
             $mysqli->close();
             return $row;
@@ -154,11 +165,11 @@ class usrModel
         }
     }
 
-    public function updateModel($id, $modelName, $partID, $brandID, $compatibilityID, $price, $stock)
+    public function updateModel($modelID, $modelName, $partID, $brandID, $compatibilityID, $price, $stock)
     {
         $mysqli = $this->connect();
         if ($mysqli) {
-            $mysqli->query("UPDATE models SET modelName = '$modelName', partID = '$partID', brandID = '$brandID', compatibilityID = '$compatibilityID', price = '$price', stock = '$stock' WHERE modelID = '$id';");
+            $mysqli->query("UPDATE models SET modelName = '$modelName', partID = '$partID', brandID = '$brandID', compatibilityID = '$compatibilityID', price = '$price', stock = '$stock' WHERE modelID = '$modelID';");
             $mysqli->close();
             return true;
         } else {
@@ -166,11 +177,11 @@ class usrModel
         }
     }
 
-    public function deleteModel($id)
+    public function deleteModel($modelID)
     {
         $mysqli = $this->connect();
         if ($mysqli) {
-            $mysqli->query("DELETE FROM models WHERE modelID = '$id';");
+            $mysqli->query("DELETE FROM models WHERE modelID = '$modelID';");
             $mysqli->close();
             return true;
         } else {
