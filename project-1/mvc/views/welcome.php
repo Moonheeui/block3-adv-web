@@ -11,9 +11,11 @@
 
     <section>
         <div class="container">
-            <h1>Welcome!</h1>
-            <a href="index.php?page=dashboard">Dashboard</a>
-            <img src="" alt="">
+            <h2>Welcome!</h2>
+            <a href="index.php?page=dashboard"><i class="fa-solid fa-door-open"></i></a>
+            <div class="call-animation">
+                <i class="computer-img fa-solid fa-computer"></i>
+            </div>
         </div>
     </section>
 

@@ -1,3 +1,4 @@
+<h3>Edit a Model</h3>
 <form method="POST">
     <input type="hidden" name="modelID" value="<?php echo $modelInfo['modelID']; ?>">
     <input type="text" name="modelName" value="<?php echo $modelInfo['modelName']; ?>">
@@ -31,7 +32,13 @@
 
     <input type="text" name="price" value="<?php echo $modelInfo['price']; ?>">
     <input type="text" name="stock" value="<?php echo $modelInfo['stock']; ?>">
-
-    <input type="submit" name="resubmit" value="Change">
-    <input type="button" onclick="window.location.href='index.php?page=dashboard';" value="Cancel">
+    <div></div>
+    <div class="button-flex">
+        <input type="submit" name="resubmit" value="Change">
+        <input type="button" onclick="window.location.href='index.php?page=view-model';" value="Cancel">
+    </div>
+    <div></div>
+    <span></span>
+    <span></span>
+    <span></span>
 </form>

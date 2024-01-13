@@ -8,7 +8,6 @@ class connectionObject
     {
     }
 }
-
 class userModel
 {
     private $mysqli;
@@ -44,7 +43,6 @@ class userModel
             return false;
         }
     }
-
     public function selectModel()
     {
         $mysqli = $this->connect();

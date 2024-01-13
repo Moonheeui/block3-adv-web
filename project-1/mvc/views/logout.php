@@ -10,8 +10,11 @@
 <body>
     <section>
         <div class="container">
-            <h1>Thank you for visiting</h1>
-            <a href="index.php?page=home">Home</a>
+            <h2>Thank you for visiting</h2>
+            <a href="index.php?page=home"><i class="fa-solid fa-house-user"></i></a>
+            <div class="icons">
+                <i class="fa-solid fa-thumbs-up"></i>
+            </div>
         </div>
     </section>
 

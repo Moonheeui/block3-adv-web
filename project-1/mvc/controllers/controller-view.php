@@ -21,7 +21,7 @@ class Controller
     public function showAll()
     {
         $models = $this->model->selectAll();
-        include 'views/add-model.php';
+        include 'views/view-model.php';
     }
 
     public function getModel()
@@ -40,14 +40,6 @@ class Controller
     {
         return $this->model->selectCompatibility();
     }
-    public function showForm()
-    {
-        $models = $this->getModel();
-        $parts = $this->getPart();
-        $brands = $this->getBrand();
-        $compatibilities = $this->getCompatibility();
-        include 'views/form.php';
-    }
     public function addModel()
     {
         $modelName = $_POST['modelName'];
@@ -57,11 +49,11 @@ class Controller
         $price = $_POST['price'];
         $stock = $_POST['stock'];
         if (!$modelName || !$partID || !$brandID || !$compatibilityID || !$price || !$stock) {
-            echo "<p>Missing infomation</p>";
+            echo "<p>Missing infomation</p><br><hr>";
             return;
         } else if ($this->model->insertModel($modelName, $partID, $brandID, $compatibilityID, $price, $stock)) {
-            // header("Location: index.php?page=add-model");
-            echo "<h4>Added a Model: <strong>$modelName</strong> successfully</h4><hr><br>";
+            header("Location: index.php?page=view-model");
+            echo "<h4>Added a Model: <strong>$$modelName</strong> successfully</h4><hr><br>";
             exit();
         } else {
             echo "<p>Could not add models</p><hr><br>";
@@ -100,10 +92,51 @@ class Controller
             echo "<p>Missing info of Compatibility</p>";
             return;
         } else if ($this->compatibility->insertCompatibility($compatibilityName)) {
-            echo "<h4>Added a Compatibility: <strong>$compatibilityName<strong> successfully</h4><hr><br>";
+            echo "<h4>Added a Compatibility: <strong>$compatibilityName</strong> successfully</h4><hr><br>";
             exit();
         } else {
             echo "<p>Could not add compatibilities</p><hr><br>";
+        }
+    }
+    public function editModelByID($modelID)
+    {
+        $modelInfo = $this->model->selectModelByID($modelID);
+        $parts = $this->getPart();
+        $brands = $this->getBrand();
+        $compatibilities = $this->getCompatibility();
+        if ($modelInfo) {
+            include 'views/edit-form.php';
+        } else {
+            echo "<p>Could not find model</p><hr><br>";
+        }
+    }
+
+    public function updateModel($modelID, $modelName, $partID, $brandID, $compatibilityID, $price, $stock)
+    {
+        $modelID = $_POST['modelID'];
+        $modelName = $_POST['modelName'];
+        $partID = $_POST['partID'];
+        $brandID = $_POST['brandID'];
+        $compatibilityID = $_POST['compatibilityID'];
+        $price = $_POST['price'];
+        $stock = $_POST['stock'];
+        if (!$modelID || !$modelName || !$partID || !$brandID || !$compatibilityID || !$price || !$stock) {
+            echo "<p>Missing information</p>";
+            $this->editModelByID($modelID);
+            return;
+        } else if ($this->model->updateModel($modelID, $modelName, $partID, $brandID, $compatibilityID, $price, $stock)) {
+            echo "<h4>Updated a Model: <strong>$modelName</strong> successfully</h4><hr><br>";
+        } else {
+            echo "<p>Could not update the model</p><hr><br>";
+        }
+    }
+
+    public function deleteModel($modelID)
+    {
+        if ($this->model->deleteModel($modelID)) {
+            echo "<h4>Deleted the Model ID: <strong>$modelID</strong> successfully</h4><hr><br>";
+        } else {
+            echo "<p>Could not delete the model</p><hr><br>";
         }
     }
 }
@@ -112,14 +145,19 @@ include_once 'controllers/connection.php';
 $connection = new connectionObject($host, $username, $password, $database);
 $controller = new Controller($connection);
 
-if (isset($_POST['submit'])) {
-    $controller->addModel();
-    $controller->showForm();
-} else if (isset($_GET['action']) && $_GET['action'] === 'edit' && isset($_GET['modelID'])) {
-    // $modelID = $_GET['modelID'];
+if (isset($_POST['edit'])) {
+    $modelID = $_POST['modelID'];
     $controller->editModelByID($modelID);
-} else {
-    $controller->showForm();
+}
+
+// if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['modelID'])) {
+//     $modelID = $_GET['modelID'];
+//     $controller->deleteModel($modelID);
+// }
+
+if (isset($_POST['delete'])) {
+    $modelID = $_POST['modelID'];
+    $controller->deleteModel($modelID);
 }
 
 if (isset($_POST['resubmit'])) {
