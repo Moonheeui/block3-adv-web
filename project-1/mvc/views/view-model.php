@@ -16,7 +16,7 @@
                 include_once("controllers/controller-view.php");
 
 
-                $connection = new connectionObject("localhost", "moonhee42_adv_web_user", "3V3o8u3^d", "moonhee42_adv_web");
+                $connection = new connectionObject("localhost", "username", "password", "database");
                 $model = new userModel($connection);
                 $models = $model->selectAll();
                 ?>
